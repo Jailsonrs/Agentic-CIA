@@ -1,17 +1,10 @@
 from pydantic import BaseModel
 
-
 class ChatRequest(BaseModel):
-    pass
+    message: str
 
-
-class EvalRequest(BaseModel):
-    pass
-
-
-class IngestDocumentsRequest(BaseModel):
-    pass
-
-
-class ResetMemoryRequest(BaseModel):
-    pass
+class ChatResponse(BaseModel):
+    session_id: int
+    user_message: str
+    agent: str
+    agent_response: str
