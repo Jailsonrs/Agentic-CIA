@@ -1,17 +1,34 @@
+# Base image
 FROM python:3.12-slim
 
-# Install uv.
+# Instala o UV (Universal Virtualenv)
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
-# Set the working directory.
+# Diretório de trabalho
 WORKDIR /app
 
-# Install the application dependencies.
+# Copia dependências para instalação
 COPY uv.lock pyproject.toml README.md ./
+
+# Cria virtualenv e instala dependências
 RUN uv sync --frozen --no-cache
 
-# Copy the application into the container.
-COPY src/agentic_cia agentic_cia/
+# Copia o código da aplicação
+COPY src/agentic_cia ./agentic_cia
+COPY data ./data
+COPY chroma_sac ./chroma_sac
+COPY static ./static
 
-CMD ["/app/.venv/bin/fastapi", "run", "agentic_cia/infrastructure/api/main.py", "--port", "8000", "--host", "0.0.0.0"]
+# Configura variáveis de ambiente
+ENV OLLAMA_HOST=http://ollama:11434
+ENV REDIS_HOST=redis
+ENV PYTHONUNBUFFERED=1
 
+# Exposição de portas
+EXPOSE 8000
+
+# Define volumes para persistência de dados
+VOLUME ["/app/chroma_sac", "/app/data", "/app/static"]
+
+# Comando de execução da aplicação
+CMD ["/app/.venv/bin/uvicorn", "agentic_cia.infrastructure.api.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
