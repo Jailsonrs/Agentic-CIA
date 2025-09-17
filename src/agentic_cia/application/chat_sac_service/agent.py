@@ -71,5 +71,5 @@ qa_chain = RetrievalQA.from_chain_type(
 #    "query": "Qual o prazo de entrega?"
 #}
 
-results = qa_chain.invoke("eu devolvi o produto. quando vou receber reembolso?")
-print(results['result'])
+# results = qa_chain.invoke("eu devolvi o produto. quando vou receber reembolso?")
+# print(results['result'])

@@ -1,7 +1,7 @@
 from typing import Dict, Type, List
 from agentic_cia.application.chat_service_base import ChatService
-from agentic_cia.application.chat_a_service.service import ChatSacService
-from agentic_cia.application.chat_b_service.service import ChatProdService
+from agentic_cia.application.chat_sac_service.service import ChatSacService
+from agentic_cia.application.chat_products_service.service import ChatProdService
 
 _registry: Dict[str, Type[ChatService]] = {
     "chat_sac": ChatSacService,
