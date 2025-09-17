@@ -38,43 +38,41 @@ O projeto segue uma arquitetura modular, separando:
 1.  Clonar o repositório:
 
     ``` {.bash language="bash"}
-    git clone https://github.com/Jailsonrs/Agentic-CIA.git
+    git clone <URL_DO_REPO>
     cd agentic-cia
     ```
 
-2.  Criar e ativar o ambiente virtual:
+2.  Instalar dependências e criar ambiente com `uv`:
 
     ``` {.bash language="bash"}
-    python -m venv .venv
-    source .venv/bin/activate  # Linux / MacOS
-    .venv\Scripts\activate     # Windows
+    # Instalar dependências
+    uv sync
     ```
 
-3.  Instalar dependências:
+3.  Ativar o shell gerenciado pelo `uv`:
 
     ``` {.bash language="bash"}
-    pip install -r requirements.txt
+    uv shell
     ```
 
 4.  Instalar Ollama CLI e modelos:
 
     ``` {.bash language="bash"}
     # Linux / MacOS
-    curl -fsSL https://ollama.com/install.sh | sh
-    ollama serve &
-    ollama pull nomic/embedding-text
-    ollama pull qwen/qwen-3:14b
+    brew install ollama
+    ollama pull nomic-embed-text
+    ollama pull qwen3:14b
 
     # Windows
-    winget install --id=Ollama.Ollama -e
-    ollama pull nomic/embedding-text
-    ollama pull qwen/qwen-3:14b
+    winget install Ollama.Ollama
+    ollama pull nomic-embed-text
+    ollama pull qwen3:14b
     ```
 
 5.  Rodar a API:
 
     ``` {.bash language="bash"}
-    uvicorn application.api.main:app --reload --host 0.0.0.0 --port 8000
+    uv run uvicorn application.api.main:app --reload --host 0.0.0.0 --port 8000
     ```
 
 # Endpoints Disponíveis
