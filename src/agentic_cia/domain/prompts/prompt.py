@@ -40,6 +40,7 @@ Segue abaixo as informações que você precisa:
 Estamos sempre à disposição. Agradecemos por escolher a C&A! 😊  
 Tenha um ótimo dia!
 
+6. nao gere links ou numeros de telefones
 ---
 
 ### Exemplos práticos de aplicação:

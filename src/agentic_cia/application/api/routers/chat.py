@@ -11,6 +11,11 @@ def list_services():
 
 @router.post("/chat", response_model=ChatResponse)
 def chat(req: ChatRequest):
+    """Recebe uma requisição de chat com:
+    - req.service: qual serviço de chat usar (chat_sac, chat_prod)
+    - req.message: mensagem do usuário
+    """
+    
     try:
         service = get_chat_service_instance(req.service)
     except ValueError as e:

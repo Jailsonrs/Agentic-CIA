@@ -19,7 +19,7 @@ sac_doc = loader.load()
 
 text_splitter = RecursiveCharacterTextSplitter(
     chunk_size=600,  # chunk size (characters)
-    chunk_overlap=10,  # chunk overlap (characters)
+    chunk_overlap=26,  # chunk overlap (characters)
     add_start_index=True,  # track index in original document
 )
 
@@ -42,7 +42,7 @@ vector_store.add_documents(documents = all_splits)
 
 retriever = vector_store.as_retriever(
     search_type="similarity",   # ou "mmr" (diversidade)
-    search_kwargs={"k": 10}      # retorna 5 documentos mais parecidos
+    search_kwargs={"k": 15}      # retorna 5 documentos mais parecidos
 )
 
 # ---------------------------
@@ -52,7 +52,7 @@ llm = OllamaLLM(
     model="qwen3:14b",
     gpu=True,
     temperature=0.1,
-    top_k = 10,
+    top_k = 5,
     reasoning= False
 )
 # ---------------------------
@@ -64,12 +64,3 @@ qa_chain = RetrievalQA.from_chain_type(
     chain_type="stuff",  # 'stuff' keeps everything in memory, uses more VRAM
     chain_type_kwargs={"prompt": template_sac_cea}
 )
-
-#queries = {
-#    "query": "Como posso abrir uma conta?",
-#    "query": "Quais são os horários de atendimento?",
-#    "query": "Qual o prazo de entrega?"
-#}
-
-# results = qa_chain.invoke("eu devolvi o produto. quando vou receber reembolso?")
-# print(results['result'])
