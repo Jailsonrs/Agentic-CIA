@@ -56,7 +56,7 @@ O projeto segue uma arquitetura modular, separando:
 
     ``` {.bash language="bash"}
     # Linux / MacOS
-    curl -fsSL https://ollama.com/install.sh | sh    ollama pull nomic-embed-text
+    curl -fsSL https://ollama.com/install.sh | sh  
     ollama pull nomic-embed-text
     ollama pull qwen3:14b
     ```
