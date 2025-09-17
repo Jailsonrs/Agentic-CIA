@@ -33,7 +33,7 @@ O projeto segue uma arquitetura modular, separando:
 
 -   Extensível para novos serviços de chat via `ChatServiceFactory`
 
-# Instalação e Setup
+# Instalação e Setup Local
 
 1.  Clonar o repositório:
 
@@ -42,7 +42,7 @@ O projeto segue uma arquitetura modular, separando:
     cd agentic-cia
     ```
 
-2.  Criar ambiente virtual:
+2.  Criar e ativar o ambiente virtual:
 
     ``` {.bash language="bash"}
     python -m venv .venv
@@ -56,7 +56,21 @@ O projeto segue uma arquitetura modular, separando:
     pip install -r requirements.txt
     ```
 
-4.  Rodar a API:
+4.  Instalar Ollama CLI e modelos:
+
+    ``` {.bash language="bash"}
+    # Linux / MacOS
+    brew install ollama
+    ollama pull nomic/embedding-text
+    ollama pull qwen/qwen-3:14b
+
+    # Windows
+    winget install Ollama.Ollama
+    ollama pull nomic/embedding-text
+    ollama pull qwen/qwen-3:14b
+    ```
+
+5.  Rodar a API:
 
     ``` {.bash language="bash"}
     uvicorn application.api.main:app --reload --host 0.0.0.0 --port 8000
@@ -131,7 +145,7 @@ Exemplo de resposta:
                 ChatSacService / ChatProdService
                                │
                                ▼
-                 RAG (qa_chain) → busca nos documentos
+                     RAG (qa_chain) → busca nos documentos
                                │
                                ▼
                        Resposta formatada
@@ -139,9 +153,40 @@ Exemplo de resposta:
                                ▼
                       Retorno ao usuário
 
-# Perguntas Comuns para SAC
+## Fluxo Interno do RAG com Ollama
 
-Algumas perguntas que o RAG consegue responder:
+O RAG utiliza:
+
+-   **Ollama Embeddings**: `nomic-embed-text` para criar vetores a
+    partir dos documentos
+
+-   **Ollama LLM**: `qwen3:14b` para gerar respostas a partir do
+    contexto recuperado
+
+```{=html}
+<!-- -->
+```
+    Documentos SAC (.md)
+          │
+          ▼
+    TextSplitter → Divide em chunks
+          │
+          ▼
+    OllamaEmbeddings (nomic-embed-text)
+          │
+          ▼
+    Chroma Vector Store → Indexação dos chunks
+          │
+          ▼
+    Retriever (busca por similaridade)
+          │
+          ▼
+    Ollama LLM (qwen3:14b)
+          │
+          ▼
+    Resposta gerada → Retorno ao usuário
+
+# Perguntas Comuns para SAC
 
 -   Qual o prazo de entrega do meu pedido?
 
