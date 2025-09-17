@@ -46,6 +46,9 @@ O projeto segue uma arquitetura modular, separando:
 
     ``` {.bash language="bash"}
     # Instalar dependências
+    
+    uv venv
+    source .venv/bin/activate
     uv sync
     ```
 
