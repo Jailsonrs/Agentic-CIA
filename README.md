@@ -60,7 +60,8 @@ O projeto segue uma arquitetura modular, separando:
 
     ``` {.bash language="bash"}
     # Linux / MacOS
-    brew install ollama
+    curl -fsSL https://ollama.com/install.sh | sh
+    ollama serve &
     ollama pull nomic/embedding-text
     ollama pull qwen/qwen-3:14b
 
