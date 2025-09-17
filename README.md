@@ -66,7 +66,7 @@ O projeto segue uma arquitetura modular, separando:
     ollama pull qwen/qwen-3:14b
 
     # Windows
-    winget install Ollama.Ollama
+    winget install --id=Ollama.Ollama -e
     ollama pull nomic/embedding-text
     ollama pull qwen/qwen-3:14b
     ```
