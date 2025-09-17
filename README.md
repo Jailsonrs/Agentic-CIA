@@ -49,13 +49,7 @@ O projeto segue uma arquitetura modular, separando:
     uv sync
     ```
 
-3.  Ativar o shell gerenciado pelo `uv`:
-
-    ``` {.bash language="bash"}
-    uv shell
-    ```
-
-4.  Instalar Ollama CLI e modelos:
+3.  Instalar Ollama CLI e modelos:
 
     ``` {.bash language="bash"}
     # Linux / MacOS
@@ -64,7 +58,7 @@ O projeto segue uma arquitetura modular, separando:
     ollama pull qwen3:14b
     ```
 
-5.  Rodar a API:
+4.  Rodar a API:
 
     ``` {.bash language="bash"}
     uv run uvicorn application.api.main:app --reload --host 0.0.0.0 --port 8000
