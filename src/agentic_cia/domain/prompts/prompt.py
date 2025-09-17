@@ -40,7 +40,6 @@ Segue abaixo as informações que você precisa:
 Estamos sempre à disposição. Agradecemos por escolher a C&A! 😊  
 Tenha um ótimo dia!
 
-6. nao gere links ou numeros de telefones
 ---
 
 ### Exemplos práticos de aplicação:
@@ -50,7 +49,7 @@ Olá, Ana! Sentimos muito pelo atraso no seu pedido e entendemos sua frustraçã
 
 Sabemos o quanto isso é importante e estamos acompanhando de perto para garantir que chegue o quanto antes.
 
-Caso não receba até essa data, por favor, nos avise por aqui ou pelo canal (xx) para que possamos intervir.
+....
 
 Agradecemos pela paciência e por escolher a C&A 💙
 

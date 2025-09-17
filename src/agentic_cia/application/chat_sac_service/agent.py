@@ -1,4 +1,3 @@
-
 from langchain_ollama import OllamaLLM, OllamaEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.chains import RetrievalQA
@@ -19,7 +18,7 @@ sac_doc = loader.load()
 
 text_splitter = RecursiveCharacterTextSplitter(
     chunk_size=600,  # chunk size (characters)
-    chunk_overlap=26,  # chunk overlap (characters)
+    chunk_overlap=10,  # chunk overlap (characters)
     add_start_index=True,  # track index in original document
 )
 
@@ -42,7 +41,7 @@ vector_store.add_documents(documents = all_splits)
 
 retriever = vector_store.as_retriever(
     search_type="similarity",   # ou "mmr" (diversidade)
-    search_kwargs={"k": 15}      # retorna 5 documentos mais parecidos
+    search_kwargs={"k": 10}      # retorna 5 documentos mais parecidos
 )
 
 # ---------------------------
@@ -52,7 +51,7 @@ llm = OllamaLLM(
     model="qwen3:14b",
     gpu=True,
     temperature=0.1,
-    top_k = 5,
+    top_k = 10,
     reasoning= False
 )
 # ---------------------------
