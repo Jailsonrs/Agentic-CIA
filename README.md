@@ -59,12 +59,7 @@ O projeto segue uma arquitetura modular, separando:
 
     ``` {.bash language="bash"}
     # Linux / MacOS
-    brew install ollama
-    ollama pull nomic-embed-text
-    ollama pull qwen3:14b
-
-    # Windows
-    winget install Ollama.Ollama
+    curl -fsSL https://ollama.com/install.sh | sh    ollama pull nomic-embed-text
     ollama pull nomic-embed-text
     ollama pull qwen3:14b
     ```
