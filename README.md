@@ -38,7 +38,7 @@ O projeto segue uma arquitetura modular, separando:
 1.  Clonar o repositório:
 
     ``` {.bash language="bash"}
-    git clone <URL_DO_REPO>
+    git clone [<URL_DO_REPO>](https://github.com/Jailsonrs/Agentic-CIA.git)
     cd agentic-cia
     ```
 
