@@ -6,6 +6,10 @@ from langchain.prompts import PromptTemplate
 template_sac_cea = PromptTemplate(
     input_variables=["context", "question"],
     template="""
+
+/set nothink
+
+
 Você é um especialista em SAC (Serviço de Atendimento ao Cliente) da C&A.
 
 Seu objetivo é atender o cliente com empatia, clareza e agilidade, sempre buscando resolver o problema ou esclarecer dúvidas de forma cordial e eficiente.

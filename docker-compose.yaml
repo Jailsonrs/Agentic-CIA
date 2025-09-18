@@ -1,5 +1,3 @@
-version: '3.9'
-
 services:
   agent-api:
     container_name: agentic-cia
@@ -11,9 +9,8 @@ services:
     env_file:
       - .env
     volumes:
-      - ./data:/app/data
-      - ./chroma_sac:/app/chroma_sac
-      - ./static:/app/static
+      - data:/app/data
+      - chroma_sac:/app/chroma_sac
     networks:
       - agentic-cia-network
     environment:
@@ -21,11 +18,10 @@ services:
       - REDIS_HOST=redis
     depends_on:
       - ollama
-      - redis
     restart: unless-stopped
 
   ollama:
-    image: ghcr.io/ollama/ollama:latest
+    image: ollama/ollama:rocm
     container_name: ollama
     ports:
       - "11434:11434"
@@ -34,16 +30,7 @@ services:
     networks:
       - agentic-cia-network
     restart: unless-stopped
-
-  redis:
-    image: redis:7-alpine
-    container_name: redis
-    ports:
-      - "6379:6379"
-    networks:
-      - agentic-cia-network
-    restart: unless-stopped
-
+    
 volumes:
   data:
   chroma_sac:

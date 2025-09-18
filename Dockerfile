@@ -3,9 +3,10 @@ FROM python:3.12-slim
 
 # Instala o UV (Universal Virtualenv)
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+RUN mkdir -p /app/data /app/static
 
 # Diretório de trabalho
-WORKDIR /app
+#WORKDIR /app
 
 # Copia dependências para instalação
 COPY uv.lock pyproject.toml README.md ./
@@ -17,7 +18,6 @@ RUN uv sync --frozen --no-cache
 COPY src/agentic_cia ./agentic_cia
 COPY data ./data
 COPY chroma_sac ./chroma_sac
-COPY static ./static
 
 # Configura variáveis de ambiente
 ENV OLLAMA_HOST=http://ollama:11434
