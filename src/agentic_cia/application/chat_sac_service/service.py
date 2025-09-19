@@ -1,7 +1,6 @@
 from typing import Optional, List, Dict
-from agentic_cia.application.chat_service_base import ChatService
 from agentic_cia.application.chat_sac_service.agent import qa_chain
-from agentic_cia.application.chat_service_base import ChatService
+from agentic_cia.infrastructure.factory.chat_service_base import ChatService
 import logging
 
 logging.basicConfig(level=logging.INFO)
